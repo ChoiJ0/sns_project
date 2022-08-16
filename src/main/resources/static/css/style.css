@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.position{
+	
+	position:fixed;
+	top:66px;
+	left:485px;
+	
+}
+
+.border {
+	border:solid 1px;
+	border-radius:5px;
+	border-color:black;
+}
+
+.w400{
+	width:400px;
+}
+
+.h40{
+	height:40px;
+}
+
+.h30{
+	height:30px;
+}
+
+.bg-color-gr{
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.txt-color-gr{
+	color:gray;
+}
+
+.ft-22{
+	font-size: 22px;
+}
+
+n_op{
+	text-decoration: none;
+}
+
+.bg-gr{
+	background-color: #aeaeae;
+}
+
+.round{
+	border-radius: 3px;
+}
+
+.mb-6rem {
+	margin-bottom:6rem;
+}
+
+.img_size{
+	width:20px;
+	height:20px;
+}
