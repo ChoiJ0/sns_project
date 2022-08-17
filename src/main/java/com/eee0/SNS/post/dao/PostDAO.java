@@ -12,8 +12,8 @@ public interface PostDAO {
 	
 	public int insertComment(
 			@Param("content") String content,
-			@Param("imagePath") String imagePath,
-			@Param("userId") int userId
+			@Param("userId") int userId,
+			@Param("imagePath") String imagePath
 			);
 
 	public List<Post> selectHome();

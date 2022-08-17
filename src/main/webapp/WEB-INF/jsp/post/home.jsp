@@ -32,7 +32,12 @@
 					<div class="border p-0">
 						<textarea class="form-control border-0" placeholder="내용을 입력하세요." id="textContent"></textarea>
 						<div class="d-flex justify-content-between m-2">
-							<div><a href="#"><img src="/static/picture/icon.png" width="30"></a></div>
+							<div>
+								<a href="javascript:void(0);" onclick="$('#fileInput').trigger('click')">
+									<img src="/static/picture/icon.png" width="30" id="imgChange">
+								</a>
+								<input type="file" id="fileInput" class="d-none">
+							</div>
 							<div><button type="button" class="btn btn-info" id="uploadBtn">업로드</button></div>					
 						</div>
 					</div>
@@ -49,7 +54,7 @@
 						</div>
 						
 						<div class="text-center">
-							<img src="/static/picture/mainImage.png">
+							<img class="w-100 round" src="${postDetail.post.imagePath}">
 						</div>
 						
 						<div class="mb-6rem h40 round">
@@ -108,10 +113,20 @@
 					return;
 				}
 				
+				// 파일을 포함한 파라미터 구성하기
+				var formData = new FormData();
+				formData.append("content", content);
+				formData.append("file", $("#fileInput")[0].files[0]);
+				
+				
+				
 				$.ajax({
 					type:"post",
 					url:"/post/comment",
-					data:{"content":content, "imagePath": ""},
+					data:formData,
+					enctype:"mutipart/form-data",
+					processData:false,
+					contentType:false,
 					success:function(data){
 						location.href = "/post/home/view";
 					},

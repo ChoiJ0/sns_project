@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.eee0.SNS.post.bo.PostBO;
 
@@ -18,16 +19,17 @@ public class PostRestController {
 	
 	@Autowired PostBO postBO;
 	
+	// 메모 입력 api
 	@PostMapping("/post/comment")
 	public Map<String, String> comment(
 			@RequestParam("content") String content,
-			@RequestParam("imagePath") String imagePath,
+			@RequestParam(value="file", required=false) MultipartFile file,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = postBO.comment(content, imagePath, userId);
+		int count = postBO.comment(content, file, userId);
 		
 		Map<String, String> result = new HashMap<>();
 		
